@@ -99,7 +99,7 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                String sql = "DELETE FROM registration WHERE studentid = ? AND termid = ? AND crn = ?";
+                String sql = "DELETE FROM registration WHERE studentid = ? AND termid = ?";
                 ps = conn.prepareStatement(sql);
                 ps.setInt(1,studentid);
                 ps.setInt(2,termid);
