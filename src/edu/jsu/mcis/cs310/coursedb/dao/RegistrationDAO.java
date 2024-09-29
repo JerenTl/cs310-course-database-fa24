@@ -27,8 +27,13 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
-                
+                String sql = "INSERT INTO registration (studentid, termid, crn) VALUES (?, ?, ?)";
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
+                ps.setInt(3, crn);
+                int affectedRows = ps.executeUpdate();
+                result = affectedRows > 0;
             }
             
         }
@@ -58,7 +63,13 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
+                String sql = "DELETE FROM registration WHERE studentid = ? AND termid = ? AND crn = ?";
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,studentid);
+                ps.setInt(2,termid);
+                ps.setInt(3,crn);
+                int affectedRows = ps.executeUpdate();
+                result = affectedRows > 0;
                 
             }
             
@@ -88,7 +99,12 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
+                String sql = "DELETE FROM registration WHERE studentid = ? AND termid = ? AND crn = ?";
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1,studentid);
+                ps.setInt(2,termid);
+                int affectedRows = ps.executeUpdate();
+                result = affectedRows > 0;
                 
             }
             
@@ -120,7 +136,12 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
+                String sql = "SELECT * FROM registration WHERE studentid = ? AND termid = ?";
+                ps = conn.prepareStatement(sql);
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
+                rs = ps.executeQuery();
+                result = DAOUtility.getResultSetAsJson(rs);
                 
             }
             
